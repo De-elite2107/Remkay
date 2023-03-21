@@ -161,6 +161,10 @@ def UserAbout(request):
     data = {} 
     return render(request, "about_us.html", data)
 
+def Privacy(request):
+    data = {}
+    return render(request, "privacy.html", data)
+
 def UserContact(request):
     user = request.user
     if user.is_authenticated:

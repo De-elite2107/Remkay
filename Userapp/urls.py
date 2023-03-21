@@ -24,6 +24,7 @@ urlpatterns = [
     path("blog",Blog, name ="student"),
     path("payment_status",UserPayment, name ="student"),
     path("about", UserAbout, name="about"),
+    path("privacy", Privacy, name="privacy"),
     path("contact",UserContact, name ="student"),
     path('userapp/', include('django.contrib.auth.urls')),
     path('users/userfeedbackform', Userfeedback, name = "userfeedform"),
