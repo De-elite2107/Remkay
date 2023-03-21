@@ -1,0 +1,12 @@
+{%extends 'index.html'%}
+{%block content%}
+    <div class="container" style="text-align: center;">
+        <br><br> <h2 style="color:#0fad00">Success</h2>
+        {% if message %}
+        <br><br> <h2 style="color:#0fad00">{{message}}</h2>
+        {% endif %}
+        <h3>Dear {{request.user.username}}</h3>
+        <p style="font-size:20px;color:#5C5C5C;">Transaction successful</p>
+        <a href="{% url 'initiate_payment' %}" class="btn btn-success">Fund wallet</a>
+    </div>
+{%endblock content%}

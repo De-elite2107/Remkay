@@ -1,0 +1,71 @@
+{%extends 'index.html'%}
+{%block content%}
+<style>
+    #blog{
+        color: rgb(54, 43, 43);
+        background-color: goldenrod;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-decoration: overline;
+        font-size: larger;
+    }
+    #post{
+        border-radius: 20px;
+    }
+</style>
+<section class="p-3">
+    <h2 class="display-2 mb-5"><b>Blog</b></h2>
+    <div class="container-fluid p-0 row mb-5">
+        {%for x in posts%}
+        <div class="col-md-4 d-flex flex-wrap mb-5">
+            <div>
+                <h3 style="text-transform: uppercase; font-weight: 700">{{x.HEADER}}</h3>
+                <h5 class="pb-3">{{x.TITLE}}</h5>
+                <p>{{x.CONTENT}}</p>
+            </div>
+            <img class="w-100 align-self-end" src="../media/{{x.IMAGE}}" alt="post_image">
+        </div>
+        {%endfor%}
+    </div>
+    {%if user.is_staff%}
+    <div id="post" class="p-3 container-fluid border bordered bg-dark text-light p-0">
+        <form action="" enctype="multipart/form-data" method="post">
+            <h3 class="display-3">New Post</h3>
+            {%csrf_token%}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text text-left"><b>Post Heading:</b></span>
+                </div>
+                {{blog.HEADER}}
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text text-left"><b>Post Title:</b></span>
+                </div>
+                {{blog.TITLE}}
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text text-left"><b>Post Content:</b></span>
+                </div>
+                {{blog.CONTENT}}
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text text-left"><b>Image:</b></span>
+                </div>
+                {{blog.IMAGE}}
+            </div>
+            <div class="btn-group btn-block">
+                <button type="reset" class="form-control btn btn-danger">Reset</button>
+                <button type="submit" class="form-control btn btn-success">Post</button>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+    //input
+    $("input").attr("class", "form-control");
+    $("textarea").attr("class", "form-control");
+</script>
+{%endif%}
+{%endblock content%}

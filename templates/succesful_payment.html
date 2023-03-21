@@ -1,0 +1,23 @@
+{%extends 'index.html'%}
+{%block content%}
+<style>
+    .c{
+        font-size: calc(1vw + 17px);
+    }
+    #make_payments{
+        background-color: goldenrod;
+        color: rgb(54, 43, 43);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-decoration: overline;
+        font-size: larger;
+    }
+</style>
+<section class="p-3">
+    <h1 class="display-3">Thanks for your patience</h1>
+    <p><b>We will get back to you once confirmed</b></p>
+    <p>This is your balance</p>
+    {%for x in response%}
+    <p class="text-secondary" style="font-size: larger; font-weight: bolder;">{{x.BALANCE}}</p>
+    {%endfor%}
+</section>
+{%endblock content%}

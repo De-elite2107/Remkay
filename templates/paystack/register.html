@@ -1,0 +1,39 @@
+{%extends 'index.html'%}
+{%block content%}
+  <section class="pb-4">
+    <div class="bg-white border rounded-5">
+      <section class="w-100 p-4 d-flex justify-content-center pb-4">
+        <form style="width: 22rem;" action="{% url 'register' %}" method="POST">
+          <h2>Paystack registration</h2>
+          <marquee behavior="scroll" direction="left"><h6 style="color: red;">Make use of the same details used for registration on site...</h6></marquee>
+          {% csrf_token %}
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+              <input type="text" id="form2Example1" class="form-control" name="username">
+              <label class="form-label" for="form2Example1" style="margin-left: 0px;">Username</label>
+            <div class="form-notch">
+              <div class="form-notch-leading" style="width: 9px;"></div>
+              <div class="form-notch-middle" style="width: 88.8px;"></div>
+              <div class="form-notch-trailing"></div>
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+              <input type="password" id="form2Example2" class="form-control" name="password">
+              <label class="form-label" for="form2Example2" style="margin-left: 0px;">Password</label>
+            <div class="form-notch">
+              <div class="form-notch-leading" style="width: 9px;"></div>
+              <div class="form-notch-middle" style="width: 64px;"></div>
+              <div class="form-notch-trailing"></div>
+            </div>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+          <!-- Log in, if user has account -->
+          <p>Already have an account with <b>Paystack</b> |<a href="{%url 'login'%}">Sign in</a></p>
+        </form>
+      </section> 
+    </div>
+  </section>
+{%endblock content%}

@@ -1,0 +1,51 @@
+{%extends 'index.html'%}
+{%block content%}
+<style>
+    #make_payments{
+        background-color: goldenrod;
+        color: rgb(54, 43, 43);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-decoration: overline;
+        font-size: larger;
+    }
+</style>
+<section class="p-3">
+    <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <h1 class="display-3" style="text-decoration: underline;">Payment Confirmation</h1>
+        <h2 class="pt-3">{{request.user.username}}</h2>
+        <div>{{form.USERNAME}}</div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Class:</span>
+            </div>
+            {{form.CLASS}}
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Amount Paid:</span>
+                <span class="input-group-text">&#8358;</span>
+            </div>
+                {{form.AMOUNTPAID}}
+            <div class="input-group-append">
+                <span class="input-group-text">K</span>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Payment Method:</span>
+            </div>
+            {{form.METHODOFPAYMENT}}
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Receipt Image:</span>
+            </div>
+            {{form.PAYMENTUPLOAD}}
+        </div>
+        <div>{{form.BALANCE}}</div>
+        <button type="reset" class="btn btn-lg btn-danger">Reset</button>
+        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+    </form>
+</section>
+{%endblock content%}

@@ -1,0 +1,186 @@
+{%extends 'index.html'%}
+{%block content%}
+{%load static%}
+<style>
+#Contact{
+    background-color: goldenrod;
+    color:rgb(54, 43, 43);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: overline;
+    font-size: larger;
+}
+
+#sec_1{
+    position: relative;
+    animation-delay: -1s;
+    animation-timing-function: ease;
+    animation-duration: 3s;
+    animation-name: section_1;
+}
+
+#sec_2{
+    position: relative;
+    animation-delay: -1s;
+    animation-timing-function: ease;
+    animation-duration: 3s;
+    animation-name: section_2;
+}
+
+#contact_bar{
+    position: relative;
+    animation-delay: -1s;
+    animation-timing-function: ease;
+    animation-duration: 3s;
+    animation-fill-mode: backwards;
+    animation-name: section_3!important;
+}
+@keyframes section_1{
+    from {width: 20%; right: 15vw; bottom: 15vh;}
+    to {width: 100%; right: 0vw; bottom: 0vh;}
+}
+@keyframes section_2{
+    from {right: 15vw; bottom: 15vh;}
+    to {right: 0vw; bottom: 0vh;}
+}
+@keyframes section_3{
+    from {left: 15vw; bottom: 15vh;}
+    to {left: 0vw; bottom: 0vh;}
+}
+</style>
+            <article class="p-3">
+                <section class="mb-4" id="sec_1" style="border-bottom: 5px solid rgb(173, 171, 171); z-index: -1;">
+                   <h2>CONTACT_US</h2>
+                </section>
+                <section id="sec_2">
+                    <h4><span class="fas fa-map-marker-alt"></span> Our Location</h4>
+                    <p class="pl-4">
+                        20, Lubokun Street, Alimi Odunsi, Off Ikola Road, Ikola Odunsi, Ipaja, Lagos<br>
+                        Tel: +2348030678649, +2348023446354, +2347089547793<br>
+                        Website: https://www.remkayschools.com<br>
+                    </p>
+                        <div class="list-group mt-5">
+                            <h4><span class="fas fa-envelope-square"></span> Email Us:</h4>
+                            <a href="mailto:kaypeace161@gmail.com?subject=Enquiries on Remkay Schools&?body=Hi" class="list-group-item list-group-item-action">- kaypeace161@gmail.com</a>
+                            <a href="mailto:mojisoladiran100@gmail.com?subject=Enquiries on Remkay Schools&?body=Hi" class="list-group-item list-group-item-action">- mojisoladiran100@gmail.com</a>
+                            <a href="mailto:delightadediran21@gmail.com?subject=Enquiries on Remkay Schools&?body=Hi" class="list-group-item list-group-item-action">- delightadediran21@gmail.com</a>
+                        </div>
+                </section>
+                <section id="contact_bar"><br>
+                    <form action="" method="POST">
+                        <h2 class="mb-4 mt-5"><span class="far fa-comment"></span> Leave a Message</h2>
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-left"><b>Your Name:</b></span>
+                            </div>
+                            {{forms.Names}}
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-left"><b>Your Number:</b></span>
+                            </div>
+                            {{forms.Phone}}
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-left"><b>Your Email:</b></span>
+                            </div>
+                            {{forms.Email}}
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-left"><b>Leave a<br>Message:</b></span>
+                            </div>
+                            {{forms.Message}}
+                        </div>
+                        <div class="btn-group btn-block">
+                            <button class="btn btn-danger" id="reset" type="reset">Reset Form</button>
+                            <button class="btn btn-success" id="submit" type="submit">Submit Form</button>
+                        </div>
+                    </form>
+                </section>
+            </article>
+<script>
+//Image Array
+$("#captcha").removeAttr("src")
+var imgArray = ["{% static 'IMG/Contact_Us/cap1.jpg' %}", "{% static 'IMG/Contact_Us/cap2.jpg' %}", "{% static 'IMG/Contact_Us/cap3.jpg' %}", "{% static 'IMG/Contact_Us/cap4.jpg' %}", "{% static 'IMG/Contact_Us/cap5.jpg' %}"]
+
+var size = imgArray.length
+
+var num = Math.floor(Math.random()*size)
+var tre = imgArray[num]
+$(document).ready(function(){
+$("#captcha").attr("src", tre)
+})
+
+//Captcha
+function Validate(){
+    event.preventDefault()
+    var Fname = document.getElementById("fname").value
+    var Lname = document.getElementById("lname").value
+    var comp = document.getElementById("company").value
+    var phone = document.getElementById("tel").value
+    var email = document.getElementById("email").value
+    var str = document.getElementById("str").value
+    var city = document.getElementById("city").value
+    var state = document.getElementById("state").value
+    var post = document.getElementById("post").value
+    var details = document.querySelectorAll("#demo p")
+    var code = document.getElementById("code").value
+    var comments = document.getElementById("faq")
+    if (num == 0){
+        if(code == "A8kY"){
+            alert("Once confirmed, We will get back to you")
+        }
+        else{
+            alert("Wrong Access Code")
+        }
+    }
+    if (num == 1){
+        if(code == "A8RE"){
+            alert("Once confirmed, We will get back to you")
+        }
+        else{
+            alert("Wrong Access Code")
+        }
+    }
+    if (num == 2){
+        if(code == "T8R4"){
+            alert("Once confirmed, We will get back to you")
+        }
+        else{
+            alert("Wrong Access Code")
+        }
+    }
+    if (num == 3){
+        if(code == "2834"){
+            alert("Once confirmed, We will get back to you")
+        }
+        else{
+            alert("Wrong Access Code")
+        }
+    }
+    if (num == 4){
+        if(code == "2H3U"){
+            alert("Once confirmed, We will get back to you")
+        }
+        else{
+            alert("Wrong Access Code")
+        }
+    }
+    
+    //Personal Information
+    details[0].innerHTML = "Full_Name: " + Fname + " " + Lname;
+    details[1].innerHTML = "Phone No.: " + phone;
+    details[2].innerHTML = "Email: " + email;
+    details[3].innerHTML = "Company: " + comp;
+    details[4].innerHTML = "Address: P.O.B " + post + ", " + str + ", " + city + ", " + state;
+    console.log("Your Comments: " + comments.value);
+}
+
+    //input
+    $("input").attr("class", "form-control");
+    $("textarea").attr("class", "form-control");
+</script>
+</article> 
+{%endblock content%}

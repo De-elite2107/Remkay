@@ -1,0 +1,40 @@
+{%extends 'index.html'%}
+{%block content%}
+<style>
+    form{
+        text-align: center;
+        margin: auto;
+        width: fit-content;
+        box-shadow: 10px 10px gray;
+    }
+    h2{
+        text-decoration: underline;
+    }
+    label{
+        width: 100%;
+        font-size: larger;
+        text-align: center;
+    }
+    input{
+        margin: auto;
+        text-align: center;
+        border: 1px solid #fff;
+        display: block;
+        width: 80%;
+        border-radius: 10px;
+        padding: 5px;
+        background-color: rgb(192, 243, 243);
+    }
+    .btn{
+        border-radius: 10px;
+    }
+</style>
+<form method="post" class="bg-light p-3">
+    <h5 class="display-4 mb-3" style="text-decoration: underline;"><b>Sign In</b></h5>
+    {{form.as_p}}
+    {%csrf_token%}
+    <input class="btn btn-success mt-3" type="submit" value="Submit">
+    <h5 class="mt-3">Don't have an account? <a href="/userapp/signup">Sign Up</a></h5>
+</form>
+
+{%endblock content%}

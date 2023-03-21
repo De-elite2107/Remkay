@@ -1,0 +1,92 @@
+{%extends 'index.html'%}
+{%block content%}
+{%load static%}
+<style>
+    #home{
+        background-color: goldenrod;
+        color:rgb(54, 43, 43);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-decoration: overline;
+        font-size: larger;
+    }
+    .carousel-inner img{
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+            <article>
+                <section>
+                    <div id="photos" class="container-fluid p-0">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                            <ul class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                                <li data-target="#myCarousel" data-slide-to="4"></li>
+                                <li data-target="#myCarousel" data-slide-to="5"></li>
+                            </ul>
+                      
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{% static 'IMG/Main/Remkay.jpg' %}" alt="Entrance" style="width:100%;">
+                                    <div class="carousel-caption">
+                                        <h3>Remkay School</h3>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{% static 'IMG/Main/Remkay_pry.jpg' %}" alt="primary" style="width:100%; object-fit: scale-down;">
+                                </div>
+                            
+                                <div class="carousel-item">
+                                    <img src="{% static 'IMG/Main/Remkay_1.jpg' %}" alt="proprietress" style="width:100%;">
+                                </div>
+                
+                                <div class="carousel-item">
+                                    <img src="{% static 'IMG/Main/Remkay_2.jpg' %}" alt="nursery" style="width:100%;">
+                                </div>
+                
+                                <div class="carousel-item">
+                                    <img src="{% static 'IMG/Main/Remkay_3.jpg' %}" alt="nursery" style="width:100%;">
+                                </div>      
+                                
+                                <div class="carousel-item">
+                                    <img src="{% static 'IMG/Main/Remkay_sec.jpg' %}" alt="college" style="width:100%;">
+                                </div>
+                            </div>
+                        
+                            <!-- Left and right controls -->
+                            <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <section class="p-3">
+                    <p>	
+                        <h1 class="d-inline">W</h1>e are proud of our rich heritage and history of delivering superior quality products and services.
+                    </p>
+                    <p>
+                        In the following pages we offer you a glimpse of Ibeto's accomplishments and future - of what we do, how we do it; where we are and where we are going. They also contain the core values that support our corporate culture and philosophy.
+                    </p>
+                    <p>
+                        For our Group, success is the product of a joint effort and we strive to achieve it in partnership with our customers.
+                    </p>
+                    <p>
+                        Providing the right quality is an essential part of our service philosophy and is reflected in all our manufacturing and business activities. We achieve this through our belief in building strong and lasting relationships set on a bedrock of integrity, high ethical standards, meticulous planning and unflinching dedication to plan execution.
+                    </p>
+                    <p>
+                        Thank you for taking the time to learn more about us. We are proud to share our organization with you and look forward to serving you.
+                    </p>
+                    <p>
+                        Dr. C. M. Ibeto, DBA, CON<br>
+                        Chairman/Chief Executive Officer
+                    </p><br>
+                </section>
+            </article>
+{%endblock content%}

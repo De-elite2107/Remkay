@@ -1,0 +1,184 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'IMG/Main/favicon (1).ico' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-5.15.3-web/fontawesome-free-5.15.3-web/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-4.0.0-dist/css/bootstrap.css' %}">
+    <script src="{% static 'Jquery_3.6.0/Jquery.js' %}"></script>
+    <script src="{% static 'bootstrap-4.0.0-dist/js/bootstrap.min.js' %}"></script>
+    <style>
+        *{
+            overflow: visible;
+        }
+        html{
+            overflow: auto;
+        }
+        body{
+            overflow: hidden;
+        }
+        header, footer{
+            color: gold;
+        }
+        #subNav{
+            display: none;
+        }
+        .auth{
+            font-size: x-large;
+        }
+        .auth a{
+            word-spacing: none;
+        }
+        .c{
+            min-height: 100vh;
+        }
+        @media screen and(max-width: 768px) {
+            *{
+                font-size: xx-small;
+            }
+        }
+        @media screen and (max-width: 576px){
+            header{
+                background-color: rgb(19, 19, 37);
+            }
+            header h1{
+                text-align: center;
+                font-weight: 1000;
+            }
+            header img{
+                display: block;
+                margin: auto;
+            }
+            #subNav{
+                display: flex;
+                background-color: rgb(19, 19, 37);
+            }
+            #collapsibleNavbar h4{
+                text-align: right;
+            }
+            .b, .bar, #mainadmin{
+                display: none;
+            }
+            * {
+                animation: none!important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <header class="row bg-dark pl-3 pt-3 pr-3 pb-0 justify-content-between align-items-end">
+        <div class="col-md-5">
+            <h1 class="display-4"><img src="{% static 'IMG/Main/School.png' %}" class="img-thumbnail" alt="school" width="100"> <strong>Remkay Schools</strong></h1>
+        </div>
+        <div class="auth nav col-md-4">
+            {%if user.is_authenticated%}
+            <a class="nav-link w-100 text-center text-danger" href="/userapp/logout">Log out</a>
+            {%else%}
+            <a class="nav-link w-50 text-right text-success" href="/userapp/login">Log in</a>
+            <a class="nav-link w-50 text-left text-success" href="/userapp/signup">Sign Up</a>
+            {%endif%}
+        </div>
+        <div class="col-md-3 text-right">
+            {%if user.is_staff%}
+            <h4 id="mainadmin" class="nav-link"><a href="/boss">Admin Page</a></h4>
+            {%endif%}
+            <h5 style="text-transform: capitalize;"><i>Modelling lives for excellence.</i></h5>
+        </div>
+        <div class="bar w-100" style= "background-color: #30353af5;">
+            <ul class="nav nav-pills nav-justified">
+                <li class="nav-item"><a class="nav-link p-3 h-100" id="home" href="/">HOME</a></li>
+                <li class="nav-item"><a class="nav-link p-3 h-100" id="blog" href="/blog">BLOG</a></li>
+                {%if user.is_authenticated%}
+                <li class="nav-item"><a class="nav-link p-3 h-100" id="payment_status" href="/payment_status">PAYMENT DETAILS</a></li>
+                <li class="nav-item"><a class="nav-link p-3 h-100" id="make_payments" href="/accounts/register/">MAKE PAYMENTS</a></li>
+                {%endif%}
+                {%if user.is_superuser%}
+                <li class="nav-item"><a class="nav-link p-3 h-100" id="all_payments" href="/allpayment">VIEW PAYMENTS</a></li>
+                {%endif%}
+                <li class="nav-item"><a class="nav-link p-3 h-100" id="About" href="/about">ABOUT US</a></li>
+                <li class="nav-item"><a class="nav-link p-3 h-100" id="Contact" href="/contact">CONTACT US</a></li>
+            </ul>
+        </div>
+    </header>
+    <nav id="subNav" class="navbar navbar-sm navbar-dark sticky-top p-0">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button>
+        {%if user.is_staff%}
+            <h5 class="m-0 text-right nav-link"><a href="/boss">Admin Page</a></h5>
+        {%endif%}
+        <div  id="collapsibleNavbar" class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item w-100"><a class="nav-link p-3" id="home" href="/">HOME</a></li>
+                <li class="nav-item w-100"><a class="nav-link p-3" id="blog" href="/blog">BLOG</a></li>
+                {%if user.is_authenticated%}
+                <li class="nav-item w-100"><a class="nav-link p-3" id="payment_status" href="/payment_status">PAYMENT DETAILS</a></li>
+                <li class="nav-item w-100"><a class="nav-link p-3" id="make_payments" href="/accounts/register/">MAKE PAYMENTS</a></li>
+                {%endif%}
+                {%if user.is_superuser%}
+                <li class="nav-item w-100"><a class="nav-link p-3" id="all_payments" href="/allpayment">VIEW PAYMENTS</a></li>
+                {%endif%}
+                <li class="nav-item w-100"><a class="nav-link p-3" id="About" href="/about">ABOUT US</a></li>
+                <li class="nav-item w-100"><a class="nav-link p-3" id="Contact" href="/contact">CONTACT US</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid c p-0" style="border-left: 7px solid #343a40; border-right: 7px solid #343a40;">
+            <script src="{% static 'Jquery.js' %}"></script>
+                {%block content%}
+                {%endblock content%}
+    </div>
+    <footer class="bg-dark p-3">
+        <nav>
+            <ul id="navbar" class="nav nav-pills">
+                <li class="page col-sm-2 nav-item p-0"><a target="_blank" class="nav-link text-info" href="tel:+2348030678649" class="num"><img src="{% static 'IMG/Main/Dialer.png' %}" alt="Phone" width="30"> <b>Call Us</b></a></li>
+                <li class="page col-sm-2 nav-item p-0"><a target="_blank" class="nav-link text-info" href="sms:+2348023446354&?body=Pls Remkay Schools I need more enquiries on your school"><img src="{% static 'IMG/Main/Messages.png' %}" alt="MG" width="30"> <b>Message Us</b></a></li>
+                <li class="page col-sm-2 nav-item p-0"><a target="_blank" class="nav-link text-info" href="https://wa.me/2348030678649"><img src="{% static 'IMG/Main/WhatsApp.png' %}" alt="WA" width="30"> <b>WhatsApp</b></a></li>
+                <li class="page col-sm-2 nav-item p-0"><a target="_blank" class="nav-link text-info" href="https://www.instagram.com/remkay_schools"><img src="{% static 'IMG/Main/Instagram.png' %}" alt="IG" width="30"> <b>Instagram</b></a></li>
+                <li class="page col-sm-2 nav-item p-0"><a target="_blank" class="nav-link text-info" href="mailto:kaypeace161@gmail.com?subject=Enquiries on Remkay Schools&?body=Hi"><img src="{% static 'IMG/Main/Gmail.png' %}" alt="gmail" width="30"> <b>Email Us</b></a></li>
+                <li class="page col-sm-2 nav-item p-0"><a target="_blank" class="nav-link text-info" href="https://www.facebook.com/Remkay-Schools-108526578622637/"><img src="{% static 'IMG/Main/Facebook.png' %}" alt="FB" width="30"> <b>Facebook</b></a></li>
+            </ul>
+        </nav>
+            <div style="font-weight: 600; font-size: larger;">
+                &copy; Delight Enterprises 2022. All rights reserved<br>
+            </div>
+    </footer>
+
+<script>
+var contactPage = document.querySelector(".b");
+var imgCont = document.querySelector(".c");
+// var nav = document.getElementById("nav");
+var x = 0;
+function contactBar(){
+    if(x == 0){
+        contactPage.style.width = "20%"
+        contactPage.style.backgroundImage = "url({%static 'IMG/Index/BG-Darkchecker.jpg' %})"
+        contactPage.style.backgroundColor = "none"
+        contactPage.style.color = "wheat"
+        $(".a i").attr("class", "fas fa-times")
+        imgCont.style.width = "79%"
+        x = 1
+    }
+    else{
+        contactPage.style.width = "0%"
+        contactPage.style.backgroundImage = "none"
+        contactPage.style.backgroundColor = "rgb(58, 58, 58)"
+        contactPage.style.color = "black"
+        $(".a i").attr("class", "fa fa-bars")
+        imgCont.style.width = "99%"
+        x = 0
+    }
+}
+$(document).ready(function(){
+  $("#filter").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#record tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+</body>
+</html>
